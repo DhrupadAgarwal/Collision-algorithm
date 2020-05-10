@@ -1,5 +1,5 @@
 
-var fixedRect,movingRect
+var fixedRect,movingRect,rect2,rect3,rect1
 
 
 
@@ -10,6 +10,15 @@ function setup() {
 
   movingRect = createSprite (600,200,80,50)
   movingRect.shapeColor="green"
+
+  rect1 = createSprite(100,100,50,50)
+  rect1.shapeColor="blue"
+
+  rect2 = createSprite(250,100,50,50)
+  rect2.shapeColor="blue"
+
+  rect3 = createSprite(350,100,50,50)
+  rect3.shapeColor="blue"
 }
 
 function draw() {
@@ -20,14 +29,16 @@ function draw() {
 
   console.log (movingRect.x-fixedRect.x)
 
-  if (movingRect.x-fixedRect.x<(movingRect.width+fixedRect.width)/2 && fixedRect.x-movingRect.x<(fixedRect.width+movingRect.width)/2 
-      && movingRect.y-fixedRect.y<(movingRect.height+fixedRect.height)/2 && fixedRect.y-movingRect.y<(fixedRect.height+movingRect.height)/2 ){
+ 
+  if (isTouching(movingRect,fixedRect)) {
     movingRect.shapeColor="red"
     fixedRect.shapeColor="red"
-  }else{
+  } else {
     movingRect.shapeColor="green"
     fixedRect.shapeColor="green"
   }
+ 
 
   drawSprites();
 }
+
